@@ -12,6 +12,7 @@ public class DriverProvider {
         DesiredCapabilities caps = new DesiredCapabilities();
         String platform = params.get("platform");
         
+        caps.setCapability(MobileCapabilityType.APP, params.get("apk"));
         caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, params.get("automation"));
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME, platform);
         caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, params.get("version"));

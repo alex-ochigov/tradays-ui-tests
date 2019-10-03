@@ -1,5 +1,7 @@
-apply plugin: 'java'
-apply plugin: 'idea'
+plugins {
+    id 'java'
+    id "io.qameta.allure" version "2.8.1"
+}
 
 repositories {
     mavenCentral()
@@ -10,10 +12,25 @@ dependencies {
     implementation "com.github.appium:java-client:7.2.0"
     implementation "org.testng:testng:6.14.3"
     implementation "org.assertj:assertj-core:3.11.1"
+    implementation "io.qameta.allure:allure-testng:2.13.0"
+}
+
+allure {
+    autoconfigure = true
+    version = '2.8.1'
+    useTestNG {
+        version = '2.13.0'
+    }
 }
 
 test {
     useTestNG {
         suites "src/test/resources/testng.xml"
+    }
+
+    testLogging {
+        showStandardStreams = true
+        exceptionFormat = 'full'
+        events "started", "passed", "skipped", "failed"
     }
 }

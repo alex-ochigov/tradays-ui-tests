@@ -1,20 +1,37 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Tradays">
+<suite name="Tradays" parallel="tests" thread-count="2">
 
-  <test name="android">
+  <test name="emulator-5554">
     <parameter name="platform" value="android" />
     <parameter name="automation" value="UiAutomator2" />
     <parameter name="version" value="9" />
     <parameter name="name" value="Android 9" />
     <parameter name="udid" value="emulator-5554" />
     <parameter name="port" value="8100" />
-    <parameter name="localization" value="ru" />
     <parameter name="appPackage" value="net.metaquotes.economiccalendar" />
     <parameter name="appActivity" value="net.metaquotes.ui.MainActivity" />
     <classes>
-
+      <class name="net.metaquotes.economiccalendar.ui.tests.SampleTest" />
     </classes>
   </test>
+
+  <test name="emulator-5556">
+    <parameter name="platform" value="android" />
+    <parameter name="automation" value="UiAutomator2" />
+    <parameter name="version" value="9" />
+    <parameter name="name" value="Android 9" />
+    <parameter name="udid" value="emulator-5556" />
+    <parameter name="port" value="8101" />
+    <parameter name="appPackage" value="net.metaquotes.economiccalendar" />
+    <parameter name="appActivity" value="net.metaquotes.ui.MainActivity" />
+    <classes>
+      <class name="net.metaquotes.economiccalendar.ui.tests.SampleTest" />
+    </classes>
+  </test>
+
+  <listeners>
+    <listener class-name="net.metaquotes.economiccalendar.ui.listeners.TestListener" />
+  </listeners>
 
 </suite>

@@ -1,0 +1,26 @@
+{
+  "capabilities":
+    [
+      {
+        "browserName":"Emulator-5446",
+        "version":"9",
+        "platform":"ANDROID",
+        "maxInstances": 1
+      }
+    ],
+  "configuration":
+  {
+    "cleanUpCycle":2000,
+    "timeout":35000,
+    "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+    "url": "http://localhost:4724/wd/hub",
+    "host": "localhost",
+    "port": 4724,
+    "maxSession": 1,
+    "register": true,
+    "registerCycle": 1000,
+    "hubPort": 4444,
+    "hubHost": "localhost",
+    "session-override": true
+  }
+}

@@ -1,11 +1,14 @@
 package net.metaquotes.economiccalendar.ui;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.events.EventFiringWebDriverFactory;
 import net.metaquotes.economiccalendar.ui.appium.DriverProvider;
 import net.metaquotes.economiccalendar.ui.appium.Drivers;
+import net.metaquotes.economiccalendar.ui.listeners.EventsListener;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -17,7 +20,7 @@ public class BaseTest {
 
     private Map<String, String> params;
     private String udid;
-    private final String hub = "http://localhost:4723/wd/hub";
+    private final String hub = "http://localhost:4444/wd/hub";
     private final File app = new File("src/test/resources/tradays.apk");
 
     @BeforeClass
@@ -27,8 +30,14 @@ public class BaseTest {
         udid = params.get("udid");
 
         AppiumDriver driver = new AppiumDriver(new URL(hub), DriverProvider.setupCapabilities(params));
+        driver = EventFiringWebDriverFactory.getEventFiringWebDriver(driver, new EventsListener());
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         Drivers.set(udid, driver);
+    }
+
+    @BeforeMethod
+    public void restartApp() {
+        getDriver().resetApp();
     }
 
     @AfterClass

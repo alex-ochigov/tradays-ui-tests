@@ -10,7 +10,7 @@
   "scripts": {
     "start": "concurrently npm:start:*",
     "start:appium:emulator-5444": "appium -p 4723 -bp 5723 --nodeconfig ./grid/nodes/emulator-5444.json",
-    "start:appium:emulator-5445": "appium -p 4724 -bp 5724 --nodeconfig ./grid/nodes/emulator-5446.json",
+    "start:appium:emulator-5446": "appium -p 4724 -bp 5724 --nodeconfig ./grid/nodes/emulator-5446.json",
     "start:appium:grid": "java -jar ./node_modules/selenium-server-standalone-jar/jar/selenium-server-standalone-3.141.59.jar -role hub -hubConfig ./grid/config.json",
     "doctor": "appium-doctor"
   },
